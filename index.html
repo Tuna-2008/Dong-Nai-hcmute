@@ -1,181 +1,151 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dulichvanhoadongnai</title>
-    <style>
-        .menu{
-            background-color: white;
-            height: 100px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 40px;
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 25px;
-            font-weight: bold;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-        }
-        .logo img{
-            width:200px;
-            height:auto;
-        }
-        .logo{
-            margin-right: 0;
-        }
-        body{
-            margin: 0;
-        }
-        h2{
-            color: black;
-        }
-        a{
-            text-decoration: none;
-            color:black
-        }
-        a:hover{
-            color:red;
-        }
-        .banner {
-            width: 55%;
-            height: 450px;
-            overflow: hidden;
-            position: relative;
-            margin-top: 5px;
-        }
-        .slide {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            left: 0;
-            top: 0;
-            opacity: 0;
-            animation: slide 12s infinite;
-        }
-        .slide:nth-child(1) {
-            animation-delay: 0s;
-        }
-        .slide:nth-child(2) {
-            animation-delay: 4s;
-        }
-        .slide:nth-child(3) {
-            animation-delay: 8s;
-        }
-        @keyframes slide {
-            0% {
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            30% {
-                opacity: 1;
-            }
-            40% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 0;
-            }
-        }
-		.footer{
-            background-color: rgb(29, 119, 194);
-            color:white;
-            padding:20px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-        }
-        .footer-container{
-            display:flex;
-            justify-content: space-around;
-            max-width: 1300px;
-            margin:auto;
-        }
-        .footer-box{
-            display:flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        .footer-box h3{
-            margin-bottom: 5px;
-        }
-        .footer-box p{
-            margin:0;
-        }
-        .footer-box a{
-            color:white;
-            text-decoration: none;
-        }
-        .footer-box a:hover{
-            color:red;
-        }
-        .footer-bottom{
-            text-align: center;
-            border-top:1px solid black;
-            margin-top:10px;
-            padding:10px;
-        }
-		.gioi-thieu {
-    display: flex;
-    gap: 30px;
-    align-items: flex-start;
-    padding: 0 20px;
-}
-.overall {
-    flex: 1;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 18px;
-    line-height: 1.6;
-}
-.overall p {
-    margin: 0 0 12px 0;
-}
-    </style>
-</head>
-<body>
-	<header>
-    <nav class="menu">
-        <div class="logo">
-            <img src="./dulichvanhoa/logo.png" alt="Nhóm 1">
-        </div>
-        <a href="index.html">🏠</a>
-        <a href="lich_su_DN.html">📜Lịch sử</a>
-        <a href="">📍Địa lí</a>
-        <a href="">💰Kinh tế</a>
-        <a href="">🏞️Du lịch văn hóa</a>
-        <a href="">🏗️Cơ sở hạ tầng</a>
-    </nav>
-	</header>
-<div class="gioi-thieu">
-    <div class="banner">
-        <img src="./dulichvanhoa/anh1.jpg" class="slide">
-        <img src="./dulichvanhoa/anh2.jpeg" class="slide">
-        <img src="./dulichvanhoa/anh3.png" class="slide">
-    </div>
-	<div class="overall">
-		 <p>	Tổng quan về vùng đất Đồng Nai:	</p>
-		<p>-Đồng Nai nằm ở vùng Đông Nam Bộ, có lịch sử hình thành hơn 325 năm. Đây là cửa ngõ phía Đông của TP. Hồ Chí Minh, giáp TP. Hồ Chí Minh, Lâm Đồng, Tây Ninh và Campuchia. Tên gọi “Đồng Nai” gắn với dòng sông Đồng Nai, một trong những con sông lớn của miền Nam, bồi đắp nên vùng đất phù sa và rừng rậm từ thuở khai hoang. </p>
-		<p>-Đồng Nai trở thành thành phố trực thuộc Trung ương thứ 7 vào ngày 30/4/2026, sau Hà Nội, TP.HCM, Hải Phòng, Đà Nẵng, Cần Thơ và Huế(theo nghị quyết 30-NQ/2026/QH16).	</p>
-	</div>	
-</div>
-	
-	<footer class="footer">
-        <div class="footer-container">
-            <div class="footer-box">
-                <h3>Nhóm 1</h3>
-                <p>Giới thiệu về chúng tôi</p>
-                <p>Thành viên</p>
-            </div>
-            <div class="footer-box">
-                <h3>Liên kết</h3>
-                <a href="">Trang chủ</a>
-                <a href="">Sản phẩm</a>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>abcd@</p>
-        </div>
-    </footer>
-</body>
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kinh tế</title>
+  </head>
+  <body>
+    <header>
+      <h1>KINH TẾ ĐỒNG NAI</h1>
+    </header>
+    <h3>Kinh tế Đồng Nai 30 năm phát triển</h3>
+    <h4>Vượt qua thời bao cấp trì trệ</h4>
+    <p>
+      Nhìn chung, <b>sau ngày 30-4</b> miền Nam được hoàn toàn giải phóng, đất
+      nước thống nhất, kinh tế ở Đồng Nai chủ yếu vẫn là nông nghiệp chiếm tỷ
+      trọng khoảng <b>65-70%</b>, công nghiệp - xây dựng: hơn <b>10%</b> và
+      thương mại - dịch vụ khoảng <b>20%</b>. Nông nghiệp là mũi nhọn nhưng trên
+      nền tảng còn nghèo nàn, năng suất thấp.
+    </p>
+    <p>
+      Trong <b>5 năm</b> đầu tiên <b>(1976-1980)</b> là thời kỳ đầu chuyển đổi
+      sang chế độ kinh tế mới với muôn vàn khó khăn bởi cùng với cả nước, Đồng
+      Nai phải tập trung công sức vào nhiệm vụ khắc phục hậu quả chiến tranh,
+      khôi phục và cải tạo XHCN các thành phần kinh tế, xây dựng kinh tế quốc
+      doanh và hợp tác xã. Với mặt trận nông nghiệp, tỉnh đã tập trung cho công
+      tác vận động hồi hương, định cư, định canh và huy động các nguồn lực khẩn
+      trương khai hoang, phục hóa nhằm tăng diện tích gieo trồng và tăng sản
+      lượng lương thực. Chỉ tính trong <b>2 năm 1976- 1977</b> đã có gần
+      <b>45.000 hecta</b> đất được khai hoang, phục hóa. Để giúp nông dân có
+      điều kiện canh tác, Đồng Nai đã đầu tư nhiều công sức xây dựng nhiều công
+      trình thủy lợi. Tổng cộng trong <b>5 năm đầu tiên</b> đã xây dựng được 9
+      trạm bơm điện, trong đó có các trạm bơm lớn như Thiện Tân, Hiệp Hòa, Lợi
+      Hòa, Long Thành..., xây dựng 15 đập chứa nước và 3 đê ngăn mặn. Trong công
+      nghiệp, trên địa bàn Đồng Nai có 40 nhà máy do trung ương quản lý đã nhanh
+      chóng đưa vào sản xuất và thành lập được 29 xí nghiệp quốc doanh cùng hàng
+      trăm cơ sở sản xuất tiểu thủ công nghiệp của hợp tác xã và của tư nhân.
+      Mạng lưới thương nghiệp quốc doanh, hợp tác xã cũng được mở rộng. Nhờ vậy,
+      tổng sản phẩm bình quân hàng năm trên địa bàn đã tăng được
+      <b>9,9%/năm</b>. Tuy nhiên, do chưa có kinh nghiệm và còn chủ quan nóng
+      vội nên phát triển kinh tế trong <b>5 năm</b> đầu tiên cũng bộc lộ những
+      mặt yếu kém trong việc tổ chức mô hình hợp tác xã nông nghiệp và phát
+      triển doanh nghiệp quốc doanh.
+    </p>
+    <p>
+      <b>5 năm</b> kế tiếp<b>(1981- 1985)</b> là một giai đoạn phát triển kinh
+      tế hết sức khó khăn. Đồng Nai cũng như cả nước đã đứng trước thách thức
+      lớn là kinh tế phát triển chậm do giữ quá lâu cơ chế kinh tế bao cấp và kế
+      hoạch hóa tập trung, đồng thời phải trả giá cho những vấp váp, sai lầm về
+      tư duy làm kinh tế chủ quan: Hiệu quả kinh tế bị giảm sút, tốc độ tăng
+      trưởng kinh tế chậm, đời sống người dân khốn khó. Tính ra trong thời kỳ
+      này, tổng sản phẩm trên địa bàn tỉnh chỉ tăng <b>6,4%</b>.
+    </p>
+    <p>
+      Thực hiện đường lối đổi mới do Đại hội Đảng toàn quốc lần thứ VI đề ra,
+      Đồng Nai đã bước vào thời kỳ phát triển kinh tế <b>5 năm</b> từ
+      <b>1986-1990</b> với việc chuyển đổi từ cơ chế quản lý cũ sang cơ chế quản
+      lý mới, qua đó sửa chữa những sai lầm trước đó, không ỷ lại vào vay nợ
+      nước ngoài và dựa dẫm vào bao cấp mà tự lực vươn lên, đưa tăng trưởng kinh
+      tế Đồng Nai lên một bước ngoặt mới, làm tiền đề cho phát triển những năm
+      sau này.
+    </p>
+    <a
+      href="https://www.quanlynhanuoc.vn/2026/08/25/tu-thu-hut-dau-tu-den-dong-luc-tang-truong-cua-khu-vuc-kinh-te-co-von-dau-tu-nuoc-ngoai-o-tinh-dong-nai-giai-doan-1989-2022/"
+      title="Tạp chí Quản lý nhà nước"
+    >
+      Nguồn: Tạp chí Quản lý nhà nước
+    </a>
+    <h4>Tốc độ tăng trưởng cao, đứng đầu là công nghiệp - xây dựng</h4>
+    <p>
+      Cho tới giai đoạn <b>1991- 1995</b>, Đồng Nai mới thực sự đi vào thời kỳ
+      phát triển mới với tốc độ tăng trưởng cao và khá ổn định. Bình quân tăng
+      trưởng kinh tế hàng năm đạt <b>13%</b> so với mức tăng trưởng chung của cả
+      nước là <b>8,2%</b>. Sản xuất công nghiệp vào thời kỳ này đã phát triển
+      cao, góp phần chuyển dịch nhanh cơ cấu kinh tế và đánh dấu một bước ngoặt
+      chuyển đổi cơ cấu theo hướng phát triển hàng đầu về công nghiệp - xây
+      dựng. Nếu như năm 1990 trong cơ cấu kinh tế trên địa bàn Đồng Nai, nông
+      nghiệp vẫn còn chiếm tỉ trọng <b>50,1%</b> và công nghiệp - xây dựng chỉ
+      chiếm <b>20,6%</b> thì đến năm 1995 đã làm cuộc "đổi ngôi" với công nghiệp
+      - dịch vụ chiếm tỉ trọng <b>36,5%</b>, nông nghiệp chỉ còn <b>32,7% </b>và
+      thương mại - dịch vụ là <b>30,8%</b>. Kể từ đây, Đồng Nai tiếp tục duy trì
+      được tốc độ tăng trưởng kinh tế cao hàng năm, sản xuất công nghiệp cùng
+      với sự ra đời của hàng loạt các khu công nghiệp tập trung và thu hút nhiều
+      nhà đầu tư nước ngoài đã phát triển nhanh, góp phần tăng nhanh kim ngạch
+      xuất khẩu trên địa bàn Đồng Nai. Trong 5 năm <b>1996-2000</b>, kinh tế
+      Đồng Nai duy trì tốc độ tăng trưởng cao, bình quân hàng năm tăng
+      <b>12%</b> (so với cả nước chỉ tăng <b>6,7%</b>). Riêng ngành công nghiệp
+      tăng bình quân hàng năm là <b>20,3%</b>, trong đó khu vực công nghiệp có
+      vốn đầu tư nước ngoài (ĐTNN) tăng <b>31,5%</b> và công nghiệp trong nước
+      tăng <b>10%</b>. Năng suất lao động trong ngành công nghiệp cao gấp 2 lần
+      ngành dịch vụ và gấp 14 lần ngành nông nghiệp. <b>Từ năm 2001-2004</b>,
+      tăng trưởng GDP hàng năm ở Đồng Nai vẫn đạt ở mức cao, từ
+      <b>11,1%-13,5%/năm </b>(so với cả nước tăng trưởng từ
+      <b>6,8 - 7,7%/năm</b>).
+    </p>
+    <p>
+      <b>30 năm</b> kể từ sau ngày miền Nam hoàn toàn giải phóng là một chặng
+      đường phát triển kinh tế với những thành tựu rất đáng tự hào và đã tạo ra
+      bộ mặt kinh tế đổi mới hoàn toàn ở trên địa bàn Đồng Nai. Nếu tính thời
+      điểm <b>năm 1976</b>, cơ cấu kinh tế ở Đồng Nai là nông nghiệp chiếm tỉ
+      trọng <b>65%</b>, công nghiệp - xây dựng: <b>13,4%</b> và thương mại -
+      dịch vụ: <b>21,5%</b> thì đến<b>năm 2004</b> công nghiệp - xây dựng chiếm
+      tỉ trọng <b>57%</b>, thương mại - dịch vụ: <b>27%</b> và nông nghiệp:
+      <b>16%</b>. Từ 1 KCN, <b>đến cuối tháng 3-2005</b> Đồng Nai đã phát triển
+      lên 16 KCN, thu hút 661 dự án của nhà đầu tư trong nước và nước ngoài với
+      tổng vốn đăng ký gần <b>6,9 tỷ USD</b>. Từ những năm đầu, xuất khẩu hầu
+      như là con số không. Nhờ công nghiệp và thu hút vốn ĐTNN vào KCN tăng mạnh
+      nên trong những năm gần đây kim ngạch xuất khẩu tăng nhanh, đến
+      <b>năm 2004</b> xuất khẩu trên địa bàn Đồng Nai đã lên tới hơn
+      <b>2 tỉ 453 triệu USD</b>, trong đó 90% là xuất khẩu từ sản phẩm công
+      nghiệp, chiếm gần <b>10%</b> tổng kim ngạch xuất khẩu cả nước.
+    </p>
+    <p>
+      Về sản xuất nông nghiệp, đã tạo bước tiến vượt bậc so với trước
+      <b>năm 1975</b> cả về diện tích, năng suất và sản lượng. Như diện tích
+      gieo trồng cây lúa vào <b>năm 1973</b> đạt cao nhất là
+      <b>58.500 hecta</b> nhưng năng suất chỉ hơn <b>2 tạ /hecta</b>. Hiện nay
+      diện tích gieo trồng cây lúa hàng năm ở Đồng Nai hơn <b>80.000 hecta</b>,
+      tăng 1/3 về diện tích, với năng suất bình quân <b>36,82 tạ/hécta</b>, tăng
+      gấp 18 lần. Hay như cây cao su vào <b>năm 1971</b> có hơn
+      <b>3.000 hecta</b> với sản lượng đạt gần <b>11.000 tấn</b>. Hiện nay, chỉ
+      riêng Công ty cao su Đồng Nai hàng năm đã khai thác
+      <b>43.000- 45.000 tấn</b>, tăng gấp 4 lần. Cây bắp vào <b>năm 1973</b> có
+      hơn <b>6.200 hecta</b> với sản lượng <b>9.200 tấn</b>, hiện nay cây bắp
+      trồng hàng năm ở Đồng Nai <b>hơn 65.000 hecta</b>, tăng gấp hơn 10 lần về
+      diện tích, với sản lượng <b>hơn 266.000 tấn</b>, tăng gấp gần 30 lần.
+      Nhiều cây trồng khác có giá trị kinh tế đã được đầu tư giống mới cho năng
+      suất rất cao như cây điều, cây thuốc lá sợi vàng, cây tiêu, bông vải...
+      Đặc biệt là giá trị tổng sản lượng ngành chăn nuôi trong nông nghiệp chiếm
+      tỷ trọng từ <b>7,6%</b> đến nay đã lên tới <b>26%</b>, đưa chăn nuôi trở
+      thành ngành sản xuất chính. Tổng thu ngân sách trên địa bàn Đồng Nai từ
+      <b
+        >42 triệu đồng (năm 1976) lên 109,2 tỷ đồng (năm 1990) rồi 875 tỷ đồng
+        (năm 1995) và tới năm 2004 lên tới hơn 6.000 tỷ đồng.</b
+      >
+    </p>
+    <p>
+      Về cơ sở hạ tầng kỹ thuật cũng đã có bước chuyển biến rất rõ rệt với hệ
+      thống đường, điện thoại, điện và nước sạch không chỉ có ở các đô thị, khu
+      dân cư thị tứ mà đã được xây dựng, mở mang về tới hầu hết các vùng nông
+      thôn ở Đồng Nai. Đến cuối năm nay, Đồng Nai phấn đấu có <b>95% </b>tổng số
+      hộ trong toàn tỉnh có điện và <b>90%</b> tổng số hộ dùng nước sạch hợp vệ
+      sinh. Hộ nghèo giảm xuống còn dưới <b>2%...</b>
+    </p>
+    <p>
+      <b>30 năm</b> sau ngày miền Nam giải phóng đã đánh dấu một chặng đường
+      phát triển vẻ vang của Đồng Nai, một trong những địa phương ở vùng kinh tế
+      trọng điểm phía Nam luôn đi đầu về tốc độ tăng trưởng cao so với cả nước.
+    </p>
+  </body>
 </html>
