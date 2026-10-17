@@ -5,6 +5,97 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kinh tế</title>
     <style>
+       .khung {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+	font-family:"arial";
+  }
+  p {
+    margin: 0 0 10px 0;
+	line-height:1.5;
+	font-size:17px;
+  }
+  h1, h2, h3 {
+  margin: 2px 0 8px 0;
+}
+	.menu{
+            background-color: white;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 25px;
+            font-weight: bold;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        .logo img{
+            width:200px;
+            height:auto;
+		}
+		.logo{
+            margin-right: 0;
+        }
+        body{
+            margin: 0;
+		a {
+    text-decoration: none;
+    color: black;
+}	
+			
+			a:hover{
+    	color: red;
+	}
+			.content-img {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .content-img img {
+            max-width: 800px;
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+		}
+	.footer{
+            background-color: rgb(29, 119, 194);
+            color:white;
+            padding:20px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 40px;
+        }
+        .footer-container{
+            display:flex;
+            justify-content: space-around;
+            max-width: 1300px;
+            margin:auto;
+        }
+        .footer-box{
+            display:flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .footer-box h3{
+            margin-bottom: 5px;
+        }
+        .footer-box p{
+            margin:0;
+        }
+        .footer-box a{
+            color:white;
+            text-decoration: none;
+        }
+        .footer-box a:hover{
+            color:red;
+        }
+        .footer-bottom{
+            text-align: center;
+            border-top:1px solid black;
+            margin-top:10px;
+            padding:10px;
+        }
       body {
         margin: 0;
         background-color: #f2f5ef;
@@ -96,9 +187,19 @@
     </style>
   </head>
   <body>
-    <header>
-      <h1>KINH TẾ ĐỒNG NAI</h1>
-    </header>
+   <header>
+    <nav class="menu">
+        <div class="logo">
+            <img src="./dulichvanhoa/logo.png" alt="Nhóm 1">
+        </div>
+        <a href="index.html">🏠</a>
+        <a href="lich_su_DN.html">📜Lịch sử</a>
+        <a href="dia_li_ln/dia_lidn1.html">📍Địa lí</a>
+        <a href="nhóm1/kinhte.html">💰Kinh tế</a>
+        <a href="dulichvanhoa/dulich.html">🏞️Du lịch văn hóa</a>
+        <a href="GiaoThong/gthong.html">🏗️Cơ sở hạ tầng</a>
+    </nav>
+	</header>
     <div class="noidung">
       <div class="anh-trai">
         <img src="./nhóm1/nongnghiep.jpg" alt="Nông nghiệp" />
@@ -308,5 +409,34 @@
         <img src="./nhóm1/e.jpg" alt="Đồng Nai 31" />
       </div>
     </div>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-box">
+                <h3>Nhóm 1</h3>
+                <p>Email: 26110196@student.hcmute.edu.vn</p>
+				<p>Hotline: 0799169315</p>
+                <a href='trogiup.html'>Trợ giúp</a>
+				<a href='trogiup.html'>Góp ý</a>
+            </div>
+            <div class="footer-box">
+				<h3>Khác</h3>
+                <a href="index.html">Trang chủ</a>
+                <a href="https://www.facebook.com/tuan.tran.quang.anh/">Facebook</a>
+				<a href='ChinhSachBaoMat/chinhsachbaomat.html'>Chính sách bảo mật</a>
+            </div>
+			<div class='footer-box'>
+				<h3>Thành viên</h3>
+				<p>Trần Quang Anh Tuấn</p>
+				<p>Phan Thiên Phong</p>
+				<p>Bùi Gia Hưng 26110107</p>
+				<p>Âu Lâm Nhật</p>
+				<p>Nguyễn Đức Huy 26110105</p>
+			</div>
+        </div>
+        <div class="footer-bottom">
+            <p>Địa chỉ:Số 1 Võ Văn Ngân, Phường Thủ Đức, Thành phố Hồ Chí Minh<br>
+			Bản quyền Nhóm. Bảo lưu mọi quyền</p>
+        </div>
+    </footer>
   </body>
 </html>
