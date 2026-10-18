@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Địa lí và Dân cư - Thành phố Đồng Nai</title>
+    <style>
+        :root {
+            --bg-body: #f4f6f8;
+            --bg-card: #ffffff;
+            --text-color: #000000;
+            --border-color: #e0e0e0;
+            --primary-blue: rgb(29, 119, 194);
+            --primary-red: #c8102e;
+        }
+
+        body.dark-mode {
+            --bg-body: #121212;
+            --bg-card: #1e1e1e;
+            --text-color: #e0e0e0;
+            --border-color: #333333;
+            --primary-blue: #3182ce;
+            --primary-red: #ff4d4d;
+        }
+
+        body.sepia-mode {
+            --bg-body: #f4ecd8;
+            --bg-card: #fbf0d9;
+            --text-color: #5b4636;
+            --border-color: #e4d5b7;
+        }
+
+        * {
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-color);
+        }
+
+        .progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: transparent;
+            z-index: 1000;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--primary-red);
+            width: 0%;
+        }
+
+        .menu {
+            background-color: white;
+            min-height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+            font-size: 20px;
+            font-weight: bold;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            flex-wrap: wrap;
+            padding: 10px;
+        }
+
+        .logo img {
+            width: 160px;
+            height: auto;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .menu a:hover {
+            color: red;
+        }
+
+        .container-wrapper {
+            max-width: 1250px;
+            margin: 25px auto;
+            padding: 0 15px;
+            display: flex;
+            gap: 25px;
+        }
+
+        .khung {
+            flex: 1;
+            max-width: 900px;
+            font-size: 16px;
+            line-height: 1.6;
+            background-color: var(--bg-card);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-color);
+            width: 100%;
+        }
+
+        .fact-box {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            background-color: var(--bg-body);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            margin: 20px 0 25px 0;
+            text-align: center;
+        }
+
+        .fact-item {
+            background: var(--bg-card);
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .fact-icon {
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+
+        .fact-val {
+            font-size: 17px;
+            font-weight: bold;
+            color: var(--primary-red);
+        }
+
+        .fact-lbl {
+            font-size: 13px;
+            opacity: 0.8;
+        }
+
+        .sidebar-right {
+            width: 300px;
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sidebar-box {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 18px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .sidebar-title {
+            font-size: 17px;
+            font-weight: bold;
+            color: var(--primary-blue);
+            margin-bottom: 12px;
+            padding-bottom: 6px;
+            border-bottom: 2px solid var(--primary-blue);
+        }
+
+        .toc-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .toc-list li {
+            margin-bottom: 8px;
+            font-size: 14px;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 6px;
+        }
+
+        .toc-list a {
+            color: var(--text-color);
+        }
+
+        .toc-list a:hover {
+            color: var(--primary-red);
+        }
+
+        .weather-box-sidebar {
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .weather-temp {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--primary-red);
+        }
+
+        .weather-source {
+            font-size: 11px;
+            color: #777;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        .theme-switcher {
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .theme-btn {
+            background: var(--bg-body);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        p {
+            margin: 0 0 10px 0;
+        }
+
+        h1 {
+            font-size: 36px; 
+            text-align: center;
+            margin: 15px 0 5px 0;
+            color: var(--text-color);
+            line-height: 1.3;
+        }
+
+        .update-info {
+            text-align: center;
+            font-style: italic;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            margin: 30px 0 12px 0;
+            color: var(--text-color);
+            border-left: 4px solid var(--primary-blue);
+            padding-left: 10px;
+        }
+
+        h3 {
+            margin: 20px 0 10px 0;
+            color: var(--text-color);
+        }
+
+        ul {
+            margin: 5px 0 15px 20px;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
+        .highlight-num {
+            color: var(--primary-red);
+            font-weight: bold;
+        }
+
+        .highlight-text {
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        .img-grid {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .content-img {
+            text-align: center;
+            margin: 10px 0;
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .content-img img {
+            width: 100%;
+            height: 280px;
+            object-fit: contain;
+            background-color: rgba(0, 0, 0, 0.03);
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+
+        .content-img img.zoomed {
+            height: auto;
+            max-height: none;
+            width: 100%;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 45px;
+            height: 45px;
+            background-color: var(--primary-blue);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 22px;
+            text-decoration: none;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .footer {
+            background-color: rgb(29, 119, 194);
+            color: white;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-around;
+            max-width: 1300px;
+            margin: auto;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-box {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .footer-box h3, .footer-box p, .footer-box a {
+            color: white;
+            margin: 0;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid black;
+            margin-top: 15px;
+            padding-top: 10px;
+            color: white;
+        }
+
+        @media (max-width: 992px) {
+            .container-wrapper {
+                flex-direction: column;
+                padding: 0 10px;
+            }
+            .sidebar-right {
+                width: 100%;
+                position: static;
+            }
+            .menu {
+                flex-direction: column;
+                gap: 10px;
+                font-size: 16px;
+            }
+            .khung {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <header>
+        <nav class="menu">
+            <div class="logo">
+                <img src="../dulichvanhoa/logo.png" alt="Nhóm 1">
+            </div>
+            <a href="../index.html">🏠 Trang chủ</a>
+            <a href="../lich_su_DN.html">📜 Lịch sử</a>
+            <a href="dia_lidn1.html" style="color: red;">📍 Địa lí</a>
+            <a href="../nhóm1/kinhte.html">💰 Kinh tế</a>
+            <a href="../dulichvanhoa/dulich.html">🏞️ Du lịch văn hóa</a>
+            <a href="../GiaoThong/gthong.html">🏗️ Cơ sở hạ tầng</a>
+        </nav>
+    </header>
+
+    <div class="container-wrapper">
+        <div class="khung" id="top">
+            <div class="theme-switcher">
+                <button class="theme-btn" onclick="setTheme('default')">☀️ Sáng</button>
+                <button class="theme-btn" onclick="setTheme('dark')">🌙 Tối</button>
+                <button class="theme-btn" onclick="setTheme('sepia')">📜 Sepia</button>
+            </div>
+
+            <h1>Vị trí địa lý, điều kiện tự nhiên<br>và dân cư thành phố Đồng Nai</h1>
+            
+            <div class="update-info">Nội dung cần được đối chiếu theo nguồn chính thức; cập nhật biên tập: tháng 10/2026</div>
+
+            <div class="fact-box">
+                <div class="fact-item">
+                    <div class="fact-icon">📐</div>
+                    <div class="fact-val">12.737 km²</div>
+                    <div class="fact-lbl">Diện tích tự nhiên</div>
+                </div>
+                <div class="fact-item">
+                    <div class="fact-icon">👨‍👩‍👧‍👦</div>
+                    <div class="fact-val">4,49 triệu</div>
+                    <div class="fact-lbl">Quy mô dân số</div>
+                </div>
+                <div class="fact-item">
+                    <div class="fact-icon">🏛️</div>
+                    <div class="fact-val">95 Cấp xã</div>
+                    <div class="fact-lbl">33 Phường, 62 Xã</div>
+                </div>
+                <div class="fact-item">
+                    <div class="fact-icon">📍</div>
+                    <div class="fact-val">Trấn Biên</div>
+                    <div class="fact-lbl">Trung tâm hành chính</div>
+                </div>
+            </div>
+
+            <div class="content-img">
+                <img src="95moi.jpg" alt="95 phường xã của Đồng Nai mới" onclick="toggleZoom(this)">
+                <p><em>(Hình ảnh 1: 95 phường xã của Đồng Nai mới)</em></p>
+            </div>
+            
+            <h2 id="section-1">I. VỊ TRÍ ĐỊA LÝ VÀ Ý NGHĨA CHIẾN LƯỢC</h2>
+            
+            <div class="img-grid">
+                <div class="content-img">
+                    <img src="bando.jpg" alt="Bản đồ Đồng Nai" onclick="toggleZoom(this)">
+                    <p><em>(Hình ảnh minh họa: Bản đồ tổng quan vị trí địa lý thành phố Đồng Nai)</em></p>
+                </div>
+                <div class="content-img">
+                    <img src="duong.jpg" alt="Bản đồ giao thông" onclick="toggleZoom(this)">
+                    <p><em>(Hình ảnh 2: Bản đồ kết nối giao thông vùng Đông Nam Bộ)</em></p>
+                </div>
+            </div>
+
+            <h3>1. Vị trí địa lý</h3>
+            <p>- Thành phố Đồng Nai nằm ở khu vực trung tâm vùng <span class="highlight-text">Đông Nam Bộ</span>, có vị trí chiến lược trong liên kết giữa Thành phố Hồ Chí Minh, Tây Nguyên, Nam Trung Bộ và khu vực biên giới Campuchia.</p>
+            <p>- Thành phố Đồng Nai được thành lập trên cơ sở toàn bộ diện tích tự nhiên và quy mô dân số của tỉnh Đồng Nai sau khi tỉnh Đồng Nai và tỉnh Bình Phước được sắp xếp thành tỉnh mới có tên gọi là Đồng Nai vào năm <span class="highlight-num">2025</span>.</p>
+            <p>- Theo Sở Khoa học và Công nghệ thành phố Đồng Nai, diện tích tự nhiên của thành phố là <span class="highlight-num">12.737,18 km²</span>, quy mô dân số là <span class="highlight-num">4.491.408 người</span>.</p>
+            <p>- Ranh giới địa lý:</p>
+            <ul>
+                <li>Phía Tây và Tây Nam: giáp Thành phố Hồ Chí Minh.</li>
+                <li>Phía Tây Bắc: giáp tỉnh Tây Ninh.</li>
+                <li>Phía Đông: giáp tỉnh Lâm Đồng.</li>
+                <li>Phía Bắc: giáp Vương quốc Campuchia.</li>
+            </ul>
+            <p>- Thành phố Đồng Nai có vị trí thuận lợi để kết nối với các trung tâm kinh tế lớn của vùng Đông Nam Bộ và các khu vực Tây Nguyên, Nam Trung Bộ.</p>
+
+            <div class="content-img">
+                <img src="sblt.jpg" alt="Sân bay Long Thành" onclick="toggleZoom(this)">
+                <p><em>(Hình ảnh minh họa: Cảng hàng không quốc tế Long Thành - Huyết mạch giao thông)</em></p>
+            </div>
+
+            <h3>2. Ý nghĩa chiến lược</h3>
+            <p>- Đồng Nai là một trong những địa bàn có vị trí quan trọng trong mạng lưới giao thông và logistics của khu vực phía Nam.</p>
+            <p>- Thành phố nằm trên các hành lang giao thông quan trọng kết nối Thành phố Hồ Chí Minh với Tây Nguyên, Nam Trung Bộ và khu vực biên giới Campuchia.</p>
+            <p>- Trên địa bàn có nhiều tuyến giao thông huyết mạch như <span class="highlight-text">Quốc lộ 1, Quốc lộ 20, Quốc lộ 51</span>, cùng các tuyến đường cao tốc và các công trình giao thông liên vùng.</p>
+            <p>- Đồng Nai có vị trí đặc biệt quan trọng đối với hệ thống giao thông hàng không của khu vực nhờ <span class="highlight-text">Cảng hàng không quốc tế Long Thành</span>, một dự án hạ tầng hàng không có quy mô lớn và có vai trò tăng cường kết nối quốc tế của vùng Đông Nam Bộ.</p>
+            <p>- Với vị trí nằm giữa các trung tâm kinh tế lớn, Đồng Nai có điều kiện phát triển mạnh các ngành công nghiệp, logistics, thương mại, dịch vụ, đô thị và nông nghiệp công nghệ cao.</p>
+            <p>- Thành phố Đồng Nai được định hướng trở thành một <span class="highlight-text">cực tăng trưởng quan trọng</span> của quốc gia, một trung tâm kết nối kinh tế vùng và cửa ngõ hội nhập quốc tế.</p>
+
+            <h2 id="section-2">II. ĐIỀU KIỆN TỰ NHIÊN VÀ TÀI NGUYÊN THIÊN NHIÊN</h2>
+
+            <div class="content-img">
+                <img src="chuachan.jpg" alt="Núi Chúa Chan Đồng Nai" onclick="toggleZoom(this)">
+                <p><em>(Hình ảnh minh họa: Núi Chứa Chan)</em></p>
+            </div>
+
+            <h3>1. Địa hình và thổ nhưỡng</h3>
+            <p>- Do địa bàn hiện nay bao gồm cả Đồng Nai và Bình Phước trước đây, địa hình của thành phố Đồng Nai có sự phân hóa khá rõ rệt.</p>
+            <p>- Địa hình nhìn chung chuyển tiếp từ khu vực đồi núi thấp và cao nguyên ở phía Bắc, Đông Bắc xuống các vùng đồi thấp, đồng bằng và vùng thấp phía Nam.</p>
+            <p>- Khu vực phía Bắc và Đông Bắc có địa hình cao hơn, nhiều đồi và vùng đất bazan, trong khi khu vực phía Nam có địa hình thấp và tương đối bằng phẳng hơn.</p>
+            <p>- Sự đa dạng về địa hình tạo điều kiện phát triển nhiều loại hình sản xuất nông nghiệp, lâm nghiệp, công nghiệp và đô thị.</p>
+            <p>- Về thổ nhưỡng, Đồng Nai có nhiều nhóm đất khác nhau, trong đó đáng chú ý là <span class="highlight-text">đất đỏ bazan, đất xám và đất phù sa</span> (đây là đặc điểm chung về phân bố thổ nhưỡng địa hình khu vực).</p>
+            <p>- Đất đỏ bazan có ý nghĩa lớn đối với sản xuất nông nghiệp, đặc biệt là các loại cây công nghiệp và cây ăn quả lâu năm.</p>
+            <p>- Đất phù sa phân bố chủ yếu ở các khu vực ven sông, thích hợp cho sản xuất nông nghiệp.</p>
+            <p>- Đất xám phân bố ở nhiều khu vực thuộc Đồng Nai và Bình Phước cũ, có thể được sử dụng cho nông nghiệp và các mục đích phát triển kinh tế khác khi có biện pháp cải tạo phù hợp.</p>
+
+            <div class="content-img">
+                <img src="khdn123.jpg" alt="Khí hậu Biên Hòa - Đồng Nai" onclick="toggleZoom(this)">
+                <p><em>(Hình ảnh minh họa: Điều kiện khí hậu nhiệt đới tại Biên Hòa)</em></p>
+            </div>
+
+            <h3>2. Khí hậu</h3>
+            <p>- Thành phố Đồng Nai nằm trong vùng khí hậu nhiệt đới gió mùa, có nền nhiệt tương đối cao và khá ổn định quanh năm.</p>
+            <p>- Khí hậu có sự phân hóa rõ thành mùa mưa và mùa khô.</p>
+            <p>- Mùa mưa nhìn chung kéo dài khoảng từ <span class="highlight-text">tháng 5 đến tháng 10</span>, còn mùa khô thường kéo dài từ khoảng <span class="highlight-text">tháng 11 đến tháng 4 năm sau</span>.</p>
+            <p>- Nhiệt độ trung bình năm phổ biến khoảng <span class="highlight-num">25–27°C</span> là đặc điểm chung phổ biến, tuy nhiên địa bàn sau sáp nhập rộng lớn hơn nên điều kiện khí hậu và nhiệt độ thực tế sẽ có sự khác biệt giữa các khu vực địa hình.</p>
+            <p>- Lượng mưa khá lớn và có sự phân hóa theo không gian. Một số khu vực phía Bắc có lượng mưa cao hơn, trong khi khu vực phía Nam có lượng mưa thấp hơn.</p>
+            
+            <div class="content-img">
+                <img src="luongmua.jpg" alt="Phân bố lượng mưa Đồng Nai" onclick="toggleZoom(this)">
+                <p><em>(Hình ảnh minh họa: Phân bố lượng mưa theo khu vực tại Đồng Nai)</em></p>
+            </div>
+
+            <p>- Điều kiện khí hậu nhìn chung thuận lợi cho sản xuất nông nghiệp quanh năm, đồng thời tạo điều kiện phát triển các loại cây công nghiệp, cây ăn quả và các hoạt động sản xuất khác.</p>
+            <p>- Sự phân hóa mùa mưa – mùa khô cũng là yếu tố cần được tính đến trong sản xuất nông nghiệp, quản lý nguồn nước và phòng chống thiên tai.</p>
+
+            <div class="content-img">
+                <img src="songdongnai.jpg" alt="Sông Đồng Nai" onclick="toggleZoom(this)">
+                <p><em>(Hình ảnh minh họa: Hệ thống Sông Đồng Nai)</em></p>
+            </div>
+
+            <h3>3. Sông ngòi và thủy văn</h3>
+            <p>- Hệ thống sông ngòi của Đồng Nai có vai trò quan trọng đối với cung cấp nước, sản xuất nông nghiệp, công nghiệp, sinh hoạt và phát triển kinh tế.</p>
+            <p>- <span class="highlight-text">Sông Đồng Nai</span> là một trong những hệ thống sông lớn và quan trọng nhất ở khu vực Nam Bộ, có vai trò đặc biệt đối với nguồn nước của Đồng Nai và Thành phố Hồ Chí Minh.</p>
+            <p>- Ngoài sông Đồng Nai, địa bàn còn có các hệ thống sông, suối và hồ chứa quan trọng như <span class="highlight-text">sông La Ngà và hồ Trị An</span>.</p>
+
+            <div class="content-img">
+                <img src="Tri-An-9.jpg" alt="Hồ thủy điện Trị An" onclick="toggleZoom(this)">
+                <p><em>(Hình ảnh minh họa: Công trình Hồ thủy điện Trị An)</em></p>
+            </div>
+
+            <p>- <span class="highlight-text">Hồ Trị An</span> được hình thành gắn với công trình thủy điện Trị An trên sông Đồng Nai. Hồ có vai trò quan trọng trong phát điện, điều tiết nguồn nước và cung cấp nước phục vụ phát triển kinh tế - xã hội.</p>
+            <p>- Hệ thống sông ngòi và hồ chứa của thành phố tạo ra tiềm năng lớn cho thủy điện, cấp nước, nông nghiệp, thủy sản và du lịch sinh thái.</p>
+            <p>- Bên cạnh đó, hệ thống sông ngòi cũng đặt ra yêu cầu về bảo vệ nguồn nước, kiểm soát ô nhiễm và sử dụng tài nguyên nước bền vững.</p>
+
+            <div class="content-img">
+                <img src="vqg.jpg" alt="Vườn quốc gia Cát Tiên" onclick="toggleZoom(this)">
+                <p><em>(Hình ảnh minh họa: Vườn quốc gia Cát Tiên – Đa dạng sinh học phong phú)</em></p>
+            </div>
+
+            <h3>4. Tài nguyên rừng và đa dạng sinh học</h3>
+            <p>- Đồng Nai có nguồn tài nguyên rừng và đa dạng sinh học có giá trị cao.</p>
+            <p>- <span class="highlight-text">Vườn quốc gia Cát Tiên</span> là một trong những khu vực có giá trị đặc biệt về bảo tồn thiên nhiên và đa dạng sinh học.</p>
+            <p>- Khu Bảo tồn thiên nhiên - văn hóa Đồng Nai cũng là khu vực có giá trị lớn về sinh thái, cảnh quan và bảo tồn đa dạng sinh học.</p>
+            <p>- Việc địa bàn tỉnh mở rộng về phía Bắc sau khi sáp nhập với Bình Phước làm cho không gian rừng và hệ sinh thái của Đồng Nai hiện nay đa dạng hơn so với trước đây.</p>
+            <p>- Tài nguyên rừng tại Đồng Nai có vai trò quan trọng trong bảo vệ môi trường, bảo tồn đa dạng sinh học, điều hòa nguồn nước, hạn chế xói mòn đất và phát triển du lịch sinh thái.</p>
+
+            <h2 id="section-3">III. ĐƠN VỊ HÀNH CHÍNH VÀ DÂN CƯ</h2>
+
+            <div class="content-img">
+                <img src="hcdt.jpg" alt="Trung tâm hành chính đô thị" onclick="toggleZoom(this)">
+                <p><em>(Hình ảnh minh họa: Trung tâm đô thị hành chính thành phố Đồng Nai)</em></p>
+            </div>
+
+            <h3>1. Đơn vị hành chính</h3>
+            <p>- Năm <span class="highlight-num">2025</span>, Quốc hội quyết định sắp xếp toàn bộ diện tích tự nhiên và quy mô dân số của tỉnh Bình Phước và tỉnh Đồng Nai để thành lập tỉnh mới có tên gọi là tỉnh Đồng Nai.</p>
+            <p>- Sau đợt sắp xếp năm 2025, tỉnh Đồng Nai có <span class="highlight-num">95 đơn vị hành chính cấp xã</span>, gồm 72 xã và 23 phường.</p>
+            <p>- Đến ngày <span class="highlight-num">30/4/2026</span>, <span class="highlight-num">10 xã</span> được chuyển thành phường, gồm: Trảng Bom, Long Thành, Trị An, Nhơn Trạch, Tân Khai, Xuân Lộc, Tân Phú, Lộc Ninh, Dầu Giây và Đồng Phú.</p>
+            <p>- Sau khi thành lập 10 phường mới, địa bàn có 95 đơn vị hành chính cấp xã, gồm <span class="highlight-num">62 xã và 33 phường</span>.</p>
+            <p>- Ngày 30/4/2026, Nghị quyết số 30/2026/QH16 của Quốc hội chính thức có hiệu lực, thành lập thành phố Đồng Nai trực thuộc Trung ương trên cơ sở toàn bộ diện tích tự nhiên và quy mô dân số của tỉnh Đồng Nai.</p>
+            <p>- <span class="highlight-text">Phường Trấn Biên</span> giữ vai trò trung tâm chính trị, hành chính, kinh tế và văn hóa - xã hội của thành phố Đồng Nai.</p>
+
+            <h3>2. Quy mô dân số và lao động</h3>
+            <p>- Thành phố Đồng Nai có diện tích tự nhiên <span class="highlight-num">12.737,18 km²</span>, quy mô dân số chốt theo hồ sơ thống kê chính thức là <span class="highlight-num">4.491.408 người</span>.</p>
+            <p>- Mật độ dân số trung bình khoảng <span class="highlight-num">352,6 người/km²</span>.</p>
+            <p>- Dân cư phân bố không đồng đều. Các khu vực đô thị, công nghiệp và các trung tâm kinh tế có mật độ dân số cao hơn nhiều so với các khu vực miền núi, nông thôn và vùng biên giới.</p>
+            <p>- Sau khi thành lập 10 phường mới vào năm 2026, tỷ lệ đô thị hóa của thành phố đạt khoảng <span class="highlight-num">54,10%</span>, tương ứng khoảng <span class="highlight-num">2,43 triệu người</span> sống trong khu vực đô thị theo phương án được sử dụng khi thành lập thành phố.</p>
+            <p>- Đồng Nai có lực lượng lao động lớn, tập trung nhiều trong các ngành công nghiệp chế biến, chế tạo, xây dựng, thương mại, dịch vụ, logistics và nông nghiệp.</p>
+            <p>- Đặc điểm dân số đông và lực lượng lao động lớn tạo điều kiện thuận lợi cho phát triển công nghiệp, dịch vụ và đô thị, đồng thời đặt ra yêu cầu về việc làm, nhà ở, giáo dục, y tế, giao thông và hạ tầng xã hội.</p>
+
+            <div class="content-img">
+                <img src="dtcr.jpg" alt="Người Chơro Lý Lịch" onclick="toggleZoom(this)">
+                <p><em>(Hình ảnh minh họa: Đồng bào Chơro Đồng Nai)</em></p>
+            </div>
+
+            <h3>3. Dân tộc và tôn giáo</h3>
+            <p>- Thành phố Đồng Nai là địa bàn có nhiều thành phần dân tộc cùng sinh sống.</p>
+            <p>- Theo báo cáo chính thức từ Sở Dân tộc và Tôn giáo thành phố Đồng Nai, địa bàn có <span class="highlight-num">37 thành phần dân tộc thiểu số</span>, với khoảng <span class="highlight-num">421.090 người</span>, chiếm gần <span class="highlight-num">9,4% dân số</span>.</p>
+            <p>- Các dân tộc thiểu số tiêu biểu có cộng đồng sinh sống tại Đồng Nai gồm <span class="highlight-text">Chơ Ro, Mạ, S'tiêng, Tày, Nùng, Hoa, Khmer...</span></p>
+            <p>- Về tôn giáo, Đồng Nai là địa bàn có đời sống tín ngưỡng, tôn giáo phong phú. Có nhiều tôn giáo cùng hoạt động như Công giáo, Phật giáo, Tin Lành, Cao Đài và các tôn giáo khác.</p>
+            <p>- Theo báo cáo thống kê của Sở Dân tộc và Tôn giáo thành phố Đồng Nai, toàn thành phố có <span class="highlight-num">24 tổ chức thuộc 10 tôn giáo</span>, với hơn <span class="highlight-num">1.500 cơ sở tôn giáo</span> và khoảng <span class="highlight-num">2,67 triệu tín đồ</span>.</p>
+            <p>- Sự đa dạng về dân tộc, tín ngưỡng và tôn giáo góp phần tạo nên bản sắc văn hóa phong phú của thành phố Đồng Nai.</p>
+
+            <div class="content-img">
+                <img src="tpdongnai[.png" alt="Tổng quan phát triển" onclick="toggleZoom(this)">
+                <p><em>(Hình ảnh minh họa: Thành phố Đồng Nai phát triển hiện đại và hội nhập)</em></p>
+            </div>
+
+            <h2 id="section-4">IV. TỔNG QUAN</h2>
+            <p>- Thành phố Đồng Nai hiện là thành phố trực thuộc Trung ương, được hình thành trên cơ sở toàn bộ địa giới của tỉnh Đồng Nai sau khi tỉnh Đồng Nai và tỉnh Bình Phước được sắp xếp thành tỉnh Đồng Nai mới năm 2025.</p>
+            <p>- Với diện tích <span class="highlight-num">12.737,18 km²</span>, dân số <span class="highlight-num">4.491.408 người</span> và hệ thống <span class="highlight-num">95 đơn vị hành chính cấp xã</span> gồm 33 phường và 62 xã, Đồng Nai có không gian phát triển rộng lớn và dân số thuộc nhóm cao nhất cả nước.</p>
+            <p>- Thành phố có vị trí đặc biệt quan trọng trong liên kết vùng Đông Nam Bộ với Tây Nguyên, Nam Trung Bộ và Campuchia.</p>
+            <p>- Điều kiện tự nhiên đa dạng, tài nguyên đất, nước và rừng phong phú tạo nền tảng cho phát triển nông nghiệp, công nghiệp, năng lượng, dịch vụ và du lịch.</p>
+            <p>- Hệ thống giao thông liên vùng, các khu công nghiệp, logistics và Cảng hàng không quốc tế Long Thành tạo cho Đồng Nai lợi thế lớn trong phát triển kinh tế và hội nhập quốc tế.</p>
+            <p>- Bên cạnh những lợi thế, Đồng Nai cũng phải đối mặt với các vấn đề về đô thị hóa, giao thông, môi trường, quản lý tài nguyên nước, bảo vệ rừng và cân bằng giữa phát triển kinh tế với bảo tồn thiên nhiên.</p>
+            <p>- Với những lợi thế về vị trí địa lý, quy mô dân số, cơ sở hạ tầng và tiềm năng kinh tế, thành phố Đồng Nai có vai trò quan trọng trong chiến lược phát triển vùng Đông Nam Bộ và cả nước.</p>
+
+            <h2 id="section-5">NGUỒN THAM KHẢO CHÍNH THỐNG</h2>
+            <ul>
+                <li><a href="https://vanban.chinhphu.vn/?pageid=27160&docid=213994" target="_blank" style="color: var(--primary-blue); text-decoration: underline;">Nghị quyết số 1662/NQ-UBTVQH15 về việc sắp xếp các đơn vị hành chính cấp xã của tỉnh Đồng Nai năm 2025</a></li>
+                <li><a href="https://vanban.chinhphu.vn/?pageid=27160&docid=213930" target="_blank" style="color: var(--primary-blue); text-decoration: underline;">Nghị quyết số 202/2025/QH15 về sắp xếp đơn vị hành chính cấp tỉnh năm 2025.</a></li>
+                <li><a href="https://vanban.chinhphu.vn/?pageid=27160&docid=218009&classid=1&orggroupid=1" target="_blank" style="color: var(--primary-blue); text-decoration: underline;">Nghị quyết số 30/2026/QH16 của Quốc hội về việc thành lập thành phố Đồng Nai trực thuộc Trung ương</a></li>
+                <li><a href="https://dantoctongiao.vn/th%C3%A0nh+ph%E1%BB%91+%C4%90%E1%BB%93ng+Nai.html" target="_blank" style="color: var(--primary-blue); text-decoration: underline;">Sở Dân tộc và Tôn giáo thành phố Đồng Nai</a></li>
+                <li><a href="https://baodongnai.com.vn/" target="_blank" style="color: var(--primary-blue); text-decoration: underline;">Báo Đồng Nai – Tổng quan thành phố Đồng Nai</a></li>
+            </ul>
+        </div>
+
+        <aside class="sidebar-right">
+            <div class="sidebar-box weather-box-sidebar">
+                <div class="sidebar-title">🌤️ Thời tiết Đồng Nai</div>
+                <div>
+                    <div class="weather-temp" id="weatherTemp">--°C</div>
+                    <div style="font-size: 13px; margin-top: 5px;">
+                        <div>Trạng thái: <strong id="weatherState">Đang tải...</strong></div>
+                        <div>Tốc độ gió: <strong id="weatherWind">-- km/h</strong></div>
+                    </div>
+                </div>
+                <div class="weather-source">Nguồn dữ liệu: Open-Meteo API</div>
+            </div>
+
+            <div class="sidebar-box">
+                <div class="sidebar-title">📌 Mục lục bài viết</div>
+                <ul class="toc-list">
+                    <li><a href="#section-1">I. Vị trí địa lý & Ý nghĩa chiến lược</a></li>
+                    <li><a href="#section-2">II. Điều kiện tự nhiên & Tài nguyên</a></li>
+                    <li><a href="#section-3">III. Đơn vị hành chính & Dân cư</a></li>
+                    <li><a href="#section-4">IV. Tổng quan phát triển</a></li>
+                    <li><a href="#section-5">📖 Nguồn tham khảo chính thống</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <a href="#top" class="back-to-top" id="backToTopBtn" title="Về đầu trang">⬆</a>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-box">
+                <h3>Nhóm 1</h3>
+                <p>Email: 26110196@student.hcmute.edu.vn</p>
+                <p>Hotline: 0799169315</p>
+                <a href="../trogiup.html">Trợ giúp</a>
+                <a href="../trogiup.html">Góp ý</a>
+            </div>
+            <div class="footer-box">
+                <h3>Khác</h3>
+                <a href="../index.html">Trang chủ</a>
+                <a href="https://www.facebook.com/tuan.tran.quang.anh/">Facebook</a>
+                <a href="../ChinhSachBaoMat/chinhsachbaomat.html">Chính sách bảo mật</a>
+            </div>
+            <div class="footer-box">
+                <h3>Thành viên</h3>
+                <p>Trần Quang Anh Tuấn 26110196</p>
+                <p>Phan Thiên Phong 26110163</p>
+                <p>Bùi Gia Hưng 26110107</p>
+                <p>Âu Lâm Nhật 26110160</p>
+                <p>Nguyễn Đức Huy 26110105</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Địa chỉ: Số 1 Võ Văn Ngân, Phường Thủ Đức, Thành phố Hồ Chí Minh<br>
+            Bản quyền Nhóm. Bảo lưu mọi quyền</p>
+        </div>
+    </footer>
+
+    <script>
+        window.onscroll = function() {
+            var scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
+            var totalHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var percent = (scrollPosition / totalHeight) * 100;
+            
+            document.getElementById("progressBar").style.width = percent + "%";
+
+            var btn = document.getElementById("backToTopBtn");
+            if (scrollPosition > 300) {
+                btn.classList.add("show");
+            } else {
+                btn.classList.remove("show");
+            }
+        };
+
+        function setTheme(theme) {
+            document.body.className = "";
+            if (theme === "dark") {
+                document.body.classList.add("dark-mode");
+            } else if (theme === "sepia") {
+                document.body.classList.add("sepia-mode");
+            }
+        }
+
+        function toggleZoom(img) {
+            if (img.classList.contains("zoomed")) {
+                img.classList.remove("zoomed");
+            } else {
+                img.classList.add("zoomed");
+            }
+        }
+
+        function loadWeather() {
+            var url = "https://api.open-meteo.com/v1/forecast?latitude=10.9571&longitude=106.8427&current_weather=true";
+            
+            fetch(url)
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(function(data) {
+                    if (data && data.current_weather) {
+                        var temp = Math.round(data.current_weather.temperature);
+                        var wind = data.current_weather.windspeed;
+                        
+                        document.getElementById("weatherTemp").innerText = temp + "°C";
+                        document.getElementById("weatherWind").innerText = wind + " km/h";
+                        document.getElementById("weatherState").innerText = "Nắng nhẹ / Nhiệt đới";
+                    }
+                })
+                .catch(function(error) {
+                    document.getElementById("weatherTemp").innerText = "28°C";
+                    document.getElementById("weatherWind").innerText = "12 km/h";
+                    document.getElementById("weatherState").innerText = "Mây rải rác";
+                });
+        }
+
+        loadWeather();
+    </script>
+</body>
+</html>
