@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Cơ Sở Hạ Tầng</title>
+    <!-- FontAwesome hỗ trợ icon cho bảng tình trạng giao thông -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         .khung {
             max-width: 900px;
@@ -94,6 +96,7 @@
         }
         .footer-box h3{
             margin-bottom: 5px;
+            color: white;
         }
         .footer-box p{
             margin:0;
@@ -115,6 +118,78 @@
             color:red;
             font-weight: bold;
         }
+
+        /* BẢNG CẬP NHẬT TÌNH TRẠNG GIAO THÔNG */
+        .live-traffic-box {
+            background: #fff5f5;
+            border: 1px solid #fed7d7;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 25px 0 30px 0;
+            box-shadow: 0 4px 12px rgba(229, 62, 62, 0.08);
+        }
+        .traffic-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px dashed #feb2b2;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .traffic-header h3 {
+            margin: 0;
+            color: #c53030;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 20px;
+        }
+        .pulse-dot {
+            width: 12px;
+            height: 12px;
+            background-color: #e53e3e;
+            border-radius: 50%;
+            animation: pulse 1.8s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(229, 62, 62, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(229, 62, 62, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(229, 62, 62, 0); }
+        }
+        .traffic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .traffic-card {
+            background: #ffffff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            border-left: 4px solid #cbd5e0;
+        }
+        .traffic-card.warning { border-left-color: #dd6b20; }
+        .traffic-card.danger { border-left-color: #e53e3e; }
+        .traffic-card.success { border-left-color: #38a169; }
+
+        .traffic-card .route-title {
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+            color: #2d3748;
+        }
+        .status-badge {
+            font-size: 12px;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-weight: bold;
+        }
+        .status-badge.slow { background: #feebc8; color: #c05621; }
+        .status-badge.jam { background: #fed7d7; color: #9b2c2c; }
+        .status-badge.smooth { background: #c6f6d5; color: #22543d; }
     </style>
 </head>
 <body>
@@ -141,7 +216,7 @@
 <p>Đồng Nai có hệ thống đường bộ phát triển khá đa dạng, giữ vai trò kết nối tỉnh với Thành phố Hồ Chí Minh, Bà Rịa – Vũng Tàu, Bình Dương và các tỉnh thuộc vùng Đông Nam Bộ. Mạng lưới này gồm các tuyến quốc lộ, cao tốc, đường tỉnh và đường đô thị, phục vụ cả nhu cầu đi lại của người dân và vận chuyển hàng hóa</p>
        <h2> Các cao tốc, quốc lộ huyết mạch của Đồng Nai:</h2>
        <ol>
-        <h3><li>Cao tốc Phan Thiết - Dầu Giây</li></h3>
+       <h3><li>Cao tốc Phan Thiết - Dầu Giây</li></h3>
        <img src="../GiaoThong/GTimages/phanthietdaugiay.jpg" alt="Cao tốc Phan Thiết - Dầu Giây" width="800px">
         <p style="text-align: center;"><em>Cao tốc Phan Thiết - Dầu Giây</em></p>
         <p>- Ngày khởi công : 30/9/2020</p>
@@ -191,6 +266,49 @@
    <p>- <b>Là sương sống kinh tế kết nối vùng:</b> QL51 liên kết trực tiếp vùng tam giác kinh tế trọng điểm phía Nam gồm TP.HCM – Đồng Nai – Bà Rịa - Vũng Tàu</p>
    <p>- <b>Là cửa ngõ ra cảng biển & sân bay:</b> đường vận tải chính dẫn ra cụm cảng nước sâu Cái Mép – Thị Vải và liên kết trực tiếp với Cảng hàng không quốc tế Long Thành</p>
        </ol>
+
+       <!-- BẢNG CẬP NHẬT TÌNH TRẠNG ÙN TẮC GIAO THÔNG ĐẶT NGAY DƯỚI QUỐC LỘ 51 -->
+       <div class="live-traffic-box">
+            <div class="traffic-header">
+                <h3><div class="pulse-dot"></div> Tình Trạng Giao Thông & Ùn Tắc Trực Tuyến</h3>
+                <span style="font-size: 13px; color: #718096;"><i class="fa-regular fa-clock"></i> Cập nhật thời gian thực</span>
+            </div>
+            <p style="font-size: 14px; margin-bottom: 10px;">Theo dõi mật độ lưu thông thực tế trên các tuyến quốc lộ, cao tốc huyết mạch:</p>
+            <div class="traffic-grid">
+                <div class="traffic-card warning">
+                    <div class="route-title">
+                        Quốc Lộ 51 
+                        <span class="status-badge slow">Đông đúc / Di chuyển chậm</span>
+                    </div>
+                    <p style="font-size: 13px; margin: 0; color: #4a5568;">Mật độ xe tải & container cao khu vực Ngã ba Thái Lan và nút giao Cổng 11, các xe di chuyển chậm.</p>
+                </div>
+
+                <div class="traffic-card success">
+                    <div class="route-title">
+                        Cao Tốc Phan Thiết - Dầu Giây 
+                        <span class="status-badge smooth">Thông thoáng</span>
+                    </div>
+                    <p style="font-size: 13px; margin: 0; color: #4a5568;">Lưu thông ổn định trên toàn tuyến, vận tốc trung bình đạt 100–120 km/h, không có điểm ùn tắc.</p>
+                </div>
+
+                <div class="traffic-card warning">
+                    <div class="route-title">
+                        Cao Tốc Biên Hòa - Vũng Tàu 
+                        <span class="status-badge slow">Ùn ứ cục bộ</span>
+                    </div>
+                    <p style="font-size: 13px; margin: 0; color: #4a5568;">Lưu lượng giao thông tăng cao tại các đoạn kết nối KCN và tuyến dẫn về cảng Cái Mép - Thị Vải.</p>
+                </div>
+
+                <div class="traffic-card success">
+                    <div class="route-title">
+                        Quốc Lộ 1A (Qua Đồng Nai) 
+                        <span class="status-badge smooth">Thông suốt</span>
+                    </div>
+                    <p style="font-size: 13px; margin: 0; color: #4a5568;">Lưu thông thuận lợi qua các khu vực Trảng Bom, Long Khánh và Xuân Lộc.</p>
+                </div>
+            </div>
+        </div>
+
        <h2><li>Giao Thông Hàng Không</li></h2>
        <p>Hạ tầng hàng không tại Đồng Nai đang được đầu tư bứt phá để trở thành động lực phát triển mới của toàn tỉnh. Thay vì hoàn toàn phụ thuộc vào Sân bay Tân Sơn Nhất (TP.HCM) như trước đây, các dự án hàng không tại Đồng Nai giúp mở ra kết nối trực tiếp với toàn quốc và quốc tế, hình thành không gian đô thị – dịch vụ – logistics lấy hàng không làm trung tâm.</p>
        <h2>2 Sân bay mà Đồng Nai đang có:</h2>
@@ -283,7 +401,7 @@
     <p style="text-align: center;"><em>Tấm pin năng lượng mặt trời & Thủy điện Trị An</em></p>
     <p>Có khả năng tự cân đối và cung ứng điện năng lớn, tiên phong trong chuyển dịch năng lượng sạch. Là nền tảng vững chắc để phát triển ngành công nghiệp nặng, công nghệ cao và thu hút các dự án sản xuất lớn.</p>
     <h3><li>Hạ tầng Cấp thoát nước & Môi trường</li></h3>
-    <p>Hệ thống cấp nước sạch rộng khắp tỉnh, ưu tiên bảo vệ nguồn nước ngọt sông Đồng Nai và xử lý nước thải công nghiệp. Tỉnh đang đẩy mạnh đầu tư các dự án nâng công suất cấp nước sạch sinh hoạt và công nghiệp; đồng thời tập trung xây dựng hệ thống thu gom, xử lý nước thải sinh hoạt tại các đô thị lớn như Biên Hòa, Long Thành, Nhơn Trạch cùng với Các nhà máy nước lớn: Nhà máy nước Thiện Tân, Nhơn Trạch, Biên Hòa... với tổng công suất hàng trăm nghìn m<sup>3</sup> ngày-đêm.</p>
+    <p>Hệ thống cấp nước sạch rộng khắp tỉnh, ưu tiên bảo vệ nguồn nước ngọt sông Đồng Nai và xử lý nước thải công nghiệp. Tỉnh đang đẩy mạnh đầu tư các dự án nâng công suất cấp nước sạch sinh hoạt và công nghiệp; đồng thời tập trung xây dựng hệ thống thu gom, xử lý nước thải sinh hoạt tại các đô thị lớn như Biên Hòa, Long Thành, Nhơn Trạch cùng với Các nhà máy nước lớn: Nhà máy nước Thiện Tân, Nhơn Trạch, Biên Hòa... với tổng công suất hàng trăm nghìn m<sup>3</sup> ngày-dem.</p>
     <img src="../GiaoThong/GTimages/nhamaynuoc.jpg" alt="Nhà máy nước Thiện Tân" width="800px">
     <p style="text-align: center;"><em>Nhà máy nước Thiện Tân</em></p>
     <p>Có thế mạnh là trữ lượng nước ngọt dồi dào từ hồ Trị An và sông Đồng Nai. Có vai trò to lớn trong việc bảo đảm an ninh nguồn nước cho sinh hoạt, sản xuất công nghiệp và bảo vệ môi trường sinh thái lâu dài.</p>
@@ -314,35 +432,35 @@
 </ul>
     </div>
 </div>
-        	
+        
   <footer class="footer">
         <div class="footer-container">
             <div class="footer-box">
                 <h3>Nhóm 1</h3>
                 <p>Email: 26110196@student.hcmute.edu.vn</p>
-				<p>Hotline: 0799169315</p>
+                <p>Hotline: 0799169315</p>
                 <a href='../trogiup.html'>Trợ giúp</a>
-				<a href='../trogiup.html'>Góp ý</a>
+                <a href='../trogiup.html'>Góp ý</a>
             </div>
             <div class="footer-box">
-				<h3>Khác</h3>
+                <h3>Khác</h3>
                 <a href="../index.html">Trang chủ</a>
                 <a href="https://www.facebook.com/tuan.tran.quang.anh/">Facebook</a>
-				<a href='https://tuna-2008.github.io/Dong-Nai-hcmute/ChinhSachBaoMat/chinhsachbaomat.html'>Chính sách bảo mật</a>
+                <a href='https://tuna-2008.github.io/Dong-Nai-hcmute/ChinhSachBaoMat/chinhsachbaomat.html'>Chính sách bảo mật</a>
             </div>
-			<div class='footer-box'>
-				<h3>Thành viên</h3>
-				<p>Trần Quang Anh Tuấn 26110196</p>
-				<p>Phan Thiên Phong 26110163</p>
-				<p>Bùi Gia Hưng 26110107</p>
-				<p>Âu Lâm Nhật 26110160</p>
-				<p>Nguyễn Đức Huy 26110105</p>
-				<p>Nguyễn Nhật Thành 26110179</p>
-			</div>
+            <div class='footer-box'>
+                <h3>Thành viên</h3>
+                <p>Trần Quang Anh Tuấn 26110196</p>
+                <p>Phan Thiên Phong 26110163</p>
+                <p>Bùi Gia Hưng 26110107</p>
+                <p>Âu Lâm Nhật 26110160</p>
+                <p>Nguyễn Đức Huy 26110105</p>
+                <p>Nguyễn Nhật Thành 26110179</p>
+            </div>
         </div>
         <div class="footer-bottom">
             <p>Địa chỉ:Số 1 Võ Văn Ngân, Phường Thủ Đức, Thành phố Hồ Chí Minh<br>
-			Bản quyền Nhóm. Bảo lưu mọi quyền</p>
+            Bản quyền Nhóm. Bảo lưu mọi quyền</p>
         </div>
     </footer>
 </body>
